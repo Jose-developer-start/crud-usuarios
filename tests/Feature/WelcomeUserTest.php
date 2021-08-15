@@ -13,10 +13,11 @@ class WelcomeUserTest extends TestCase
      *
      * @return void
      */
+    /** @test */
     public function bienvenido_users_nickname()
-    {
-        $this->get('/saludo/jorge/coto')
+    {   
+        $this->get('/saludo/jorge')
             ->assertStatus(200)
-            ->assertSee("TU nombre es ");
+            ->assertSee("Tu nombre es: jorge y no tiene apodo");
     }
 }

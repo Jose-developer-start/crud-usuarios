@@ -10,14 +10,20 @@ class UserModuleTest extends TestCase
 {
     /** @test */
     public function cargar_lista_usuario(){
-        $this->get('/usuarios')
+        $this->get('usuarios')
             ->assertStatus(200)
-            ->assertSee('Usuario registrado');    
+            ->assertSee('Usuarios');    
     }
     /** @test */
     public function crear_nuevo_usuario(){
-        $this->get('/usuarios/nuevo')
+        $this->get('usuarios/nuevo')
             ->assertStatus(200)
             ->assertSee('Crear un usuario');    
     }
+    /** @test */
+    public function cargar_detalle_usuarios(){
+        $this->get('usuarios/1')
+            ->assertStatus(200)
+            ->assertSee('Ver un solo usuario 1');    
+    }    
 }
