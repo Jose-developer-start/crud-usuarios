@@ -12,10 +12,10 @@ class UserController extends Controller
         }else{
             $users = ["Jose Miguel","Roberto Vazques","Carlos Ramirez"];
         }
-        return view('user',compact('users'));
+        return view('users.index',compact('users'));
     }
     public function show($id){
-        return "Ver un solo usuario {$id}";
+        return view('users.show',compact('id'));
     }
     public function create(){
         return "Crear un usuario";

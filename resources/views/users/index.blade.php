@@ -1,6 +1,7 @@
-@include('header')
-    <div class="container">
-        <h1>Usuarios</h1>
+@extends('layout')
+@section('title','CRUD Usuarios')
+@section('content')
+    <h1>Usuarios</h1>
     <ul>
     @foreach ($users as $user)
         
@@ -8,5 +9,5 @@
         
     @endforeach
     </ul>
-    </div>
-@include('footer')
+
+@endsection
