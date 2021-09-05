@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfessionTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateProfessionTable extends Migration
      */
     public function up()
     {
-        Schema::create('Profession', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->unique();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
+            $table->unsignedInteger('profession_id');
+            $table->foreign('profession_id')->references('id')->on('profession');
         });
     }
 
@@ -27,6 +32,6 @@ class CreateProfessionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Profession');
+        Schema::dropIfExists('users');
     }
 }
