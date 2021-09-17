@@ -7,3 +7,5 @@ $factory->define(App\Profession::class, function (Faker $faker) {
         'name' => $faker->sentence(10)
     ];
 });
+
+
