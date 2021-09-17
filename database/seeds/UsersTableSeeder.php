@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\User;
+
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -11,65 +12,23 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        User::create([
             'name' => str_random(1),
             'email' => 'josedeodanes1@gmail.com',
             'password' => bcrypt('jose'),
             'profession_id' => 1
         ]);
-        DB::table('users')->insert([
+        User::create([
             'name' => 'Jose',
             'email' => 'josedeodanes2@gmail.com',
             'password' => bcrypt('jose'),
             'profession_id' => 2
         ]);
-        DB::table('users')->insert([
+        User::create([
             'name' => 'Jose',
             'email' => 'josedeodanes3@gmail.com',
             'password' => bcrypt('jose'),
             'profession_id' => 3
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Jose',
-            'email' => 'josedeodanes4@gmail.com',
-            'password' => bcrypt('jose'),
-            'profession_id' => 4
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Jose',
-            'email' => 'josedeodanes5@gmail.com',
-            'password' => bcrypt('jose'),
-            'profession_id' => 5
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Jose',
-            'email' => 'josedeodanes6@gmail.com',
-            'password' => bcrypt('jose'),
-            'profession_id' => 6
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Jose',
-            'email' => 'josedeodanes7@gmail.com',
-            'password' => bcrypt('jose'),
-            'profession_id' => 7
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Jose',
-            'email' => 'josedeodanes8@gmail.com',
-            'password' => bcrypt('jose'),
-            'profession_id' => 8
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Jose',
-            'email' => 'josedeodanes9@gmail.com',
-            'password' => bcrypt('jose'),
-            'profession_id' => 9
-        ]);
-        DB::table('users')->insert([
-            'name' => 'Jose',
-            'email' => 'josedeodanes10@gmail.com',
-            'password' => bcrypt('jose'),
-            'profession_id' => 10
         ]);
     }
 }
