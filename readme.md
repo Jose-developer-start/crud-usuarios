@@ -13,12 +13,12 @@
 
 ## Instalación
 
-´´´´
-    composer install
-´´´´
+```php
+composer install
+```
 
 ## Poner en marca el servidor
 
-´´´
-    php artisan serve
-´´´
+```php
+php artisan serve
+```
