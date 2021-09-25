@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index(){
-        if(request()->has('empty')){
-            $users = [];
-        }else{
-            $users = ["Jose Miguel","Roberto Vazques","Carlos Ramirez"];
-        }
+        $users = User::all();
         return view('users.index',compact('users'));
     }
     public function show($id){
-        return view('users.show',compact('id'));
+        $user = User::findOrFail($id);
+        return view('users.show',compact('user'));
     }
     public function create(){
         return "Crear un usuario";
