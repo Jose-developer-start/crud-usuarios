@@ -22,7 +22,7 @@ class UserController extends Controller
         //$data = request()->all();
         $data = request()->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => ['required','email','unique:users,email'],
             'password' => 'required',
             'profession_id' => 'required'
         ],[

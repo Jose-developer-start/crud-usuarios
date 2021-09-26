@@ -19,7 +19,7 @@
                 <td scope="row">{{ $user->id }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->profession }}</td>
+                <td>{{ $user->profession->name }}</td>
                 <td>
                     <a href="{{ route('usuario.show',$user->id) }}" class="btn btn-success">Ver</a>
                     <a href="" class="btn btn-info">Editar</a>
