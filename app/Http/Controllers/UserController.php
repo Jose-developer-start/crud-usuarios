@@ -19,7 +19,20 @@ class UserController extends Controller
         return view('users.create');
     }
     public function store(){
-        $data = request()->all();
+        //$data = request()->all();
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'profession_id' => 'required'
+        ],[
+            'name.required' => "El campo nombre es requirido",
+            'email.required' => "El campo email es requirido",
+            'password.required' => "El campo password es requirido",
+            'profession_id.required' => "El campo profesión es requirido"
+        ]);
+
+
         $data['password'] = bcrypt(request()->password);
         User::create($data);
         return redirect()->route('usuario.index');

@@ -48,4 +48,20 @@ class UserModuleTest extends TestCase
             "profession_id" => 1
         ]);
     }
+    /** @test */
+    public function campo_name_required(){
+
+        $this->withoutExceptionHandling();
+
+        $this->from('/usuarios/nuevo')->post('/usuarios',[
+            'name' => "",
+            "email" => "josedeodanes99@gmail.com",
+            "password" => "jose123"
+        ])->assertRedirect('/usuarios/nuevo')
+        ->assertSessionHasErrors(['name' => "El campo nombre es obligatorio"]);
+
+        $this->assertDatabaseMissing('users',[
+            "email" => "josedeodanes99@gmail.com"
+        ]);
+    }
 }
