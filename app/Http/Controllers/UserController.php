@@ -16,6 +16,12 @@ class UserController extends Controller
         return view('users.show',compact('user'));
     }
     public function create(){
-        return "Crear un usuario";
-    }   
+        return view('users.create');
+    }
+    public function store(){
+        $data = request()->all();
+        $data['password'] = bcrypt(request()->password);
+        User::create($data);
+        return redirect()->route('usuario.index');
+    }     
 }

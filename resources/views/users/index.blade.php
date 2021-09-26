@@ -2,12 +2,14 @@
 @section('title','CRUD Usuarios')
 @section('content')
     <h1>Usuarios</h1>
+    <a href="{{ route('usuario.create') }}">Crear usuarios</a>
     <table class="table">
         <thead>
             <tr>
                 <th>#</th>
                 <th>Nombre</th>
                 <th>Correo</th>
+                <th>Profesión</th>
                 <th>Acciones</th>
             </tr>
         </thead>

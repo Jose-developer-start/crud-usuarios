@@ -25,5 +25,27 @@ class UserModuleTest extends TestCase
         $this->get('usuarios/1')
             ->assertStatus(200)
             ->assertSee('Ver un solo usuario 1');    
-    }    
+    }
+    
+    public function test_nuevo_usuario(){
+        $this->post('usuarios/nuevo',[
+            "name" => "Jose Deodanes",
+            "email" => "josedeodanes99@gmail.com",
+            "password" => "jose002",
+            "profession_id" => 1
+        ])->assertSee('Procesando informacion');
+
+        $this->assertDatabaseHas('users',[
+            "name" => "Jose Deodanes",
+            "email" => "josedeodanes99@gmail.com",
+            "password" => "jose002",
+            "profession_id" => 1
+        ]);
+        $this->assertCredentials([
+            "name" => "Jose Deodanes",
+            "email" => "josedeodanes99@gmail.com",
+            "password" => "jose002",
+            "profession_id" => 1
+        ]);
+    }
 }
