@@ -28,6 +28,9 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ route('usuario.show','9') }}">Ver usuario</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ route('profession.index') }}">Profesiones</a>
+        </li>
       </ul>
     </div>
   </div>

@@ -24,3 +24,15 @@ Route::get('/saludo/{nombre}/{apodo?}','WelcomeUserController@index')->name('sal
 
 //Eliminar
 Route::delete('/usuarios/{email}/','UserController@destroy')->name('usuario.destroy');
+
+//Route profession
+Route::get('/profession','ProfessionController@index')->name('profession.index');
+
+Route::get('/profession/nuevo', 'ProfessionController@create')->name('profession.create');
+Route::post('/profession', 'ProfessionController@store')->name('profession.storage');
+
+Route::get('/profession/edit/{profession}', 'ProfessionController@edit')->name('profession.edit');
+Route::patch('/profession/{profession}', 'ProfessionController@update')->name('profession.update');
+
+//Eliminar
+Route::delete('/profession/{profession}/','ProfessionController@destroy')->name('profession.destroy');
