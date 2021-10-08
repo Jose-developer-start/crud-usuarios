@@ -1,9 +1,17 @@
 @extends('layout')
-@section('title',"Detalle del user {$user->id}")
+
+@section('title',"Detalle del usuario {$usuario->name}")
 
 @section('content')
-    <h1>Mostrar usuarios {{ $user->id }}</h1>
-    <p>Nombre: {{ $user->name }}</p>
-    <p>Email: {{ $user->email}}</p>
+    
+    <div class="card">
+        <img class="card-img-top" src="holder.js/100x180/" alt="">
+        <div class="card-body">
+            <h4 class="card-title">{{ $usuario->name }}</h4>
+            <p class="card-text">{{ $usuario->profesion->name }}</p>
+        </div>
+    </div>
+
+
 @endsection
 

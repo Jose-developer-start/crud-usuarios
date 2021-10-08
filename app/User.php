@@ -26,7 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function profession(){
+
+
+    public function profesion(){
         return $this->belongsTo('App\Profession','profession_id');
     }
+
+    public function getRouteKeyName()
+    {
+        return "email";
+    }
+
 }

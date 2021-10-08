@@ -8,4 +8,8 @@ class Profession extends Model
 {
     protected $table = "professions";
     protected $fillable = ['name'];
+
+    public function user(){
+        return $this->hasMany('App\User');
+    }
 }

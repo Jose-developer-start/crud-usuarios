@@ -2,39 +2,44 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\ValidationUser;
+use App\Profession;
+
 use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::paginate(10);
         return view('users.index',compact('users'));
     }
-    public function show($id){
-        $user = User::findOrFail($id);
-        return view('users.show',compact('user'));
+    public function show(User $email){
+        $usuario = $email;
+        return view('users.show',compact('usuario'));
     }
     public function create(){
-        return view('users.create');
+        $professions = Profession::all();
+        $usuario = new User();
+        return view('users.create', compact('professions','usuario'));
     }
-    public function store(){
-        //$data = request()->all();
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => ['required','email','unique:users,email'],
-            'password' => 'required',
-            'profession_id' => 'required'
-        ],[
-            'name.required' => "El campo nombre es requirido",
-            'email.required' => "El campo email es requirido",
-            'password.required' => "El campo password es requirido",
-            'profession_id.required' => "El campo profesión es requirido"
-        ]);
-
-
-        $data['password'] = bcrypt(request()->password);
-        User::create($data);
+    public function storage(ValidationUser $request){
+        User::create($request->validated());
         return redirect()->route('usuario.index');
-    }     
+    }
+    public function edit(User $email){
+        $usuario = $email;
+        $professions = Profession::all();
+        return view('users.edit', compact('usuario', 'professions'));
+    }
+    public function update(ValidationUser $request,User $email){
+        $email->update($request->validated());
+        return redirect()->route('usuario.index');
+    }
+    public function destroy(User $email){
+        $email->delete();
+        return redirect()->route('usuario.index');
+    }   
+
 }
