@@ -4,8 +4,10 @@
     <h1>professions</h1>
 
     <div class="">
-        <a href="{{ route('profession.create') }}" class="btn btn-primary">Agregar</a>
-        <table class="table table-responsive-md table-hover">
+        <div class="mb-4">
+            <a href="{{ route('profession.create') }}" class="btn btn-primary">Agregar <i class="far fa-plus-square"></i></a>
+        </div>
+        <table class="table table-responsive-md table-hover" id="myTable">
             <thead>
                 <tr>
                     <th>#</th>
@@ -20,11 +22,13 @@
                     <td scope="row">{{ $i += 1 }}</td>
                     <td>{{ $profession->name }}</td>
                     <td>
-                        <a href="{{ route('profession.edit',$profession) }}" class="btn btn-info">Editar</a>
-                        <form action="{{ route('profession.destroy',$profession) }}" method="POST">
+                        <a href="{{ route('profession.edit',$profession) }}" class="btn btn-info"><i class="far fa-edit"></i></a>
+                        <a href="{{ route('profession.destroy',$profession) }}" onclick="event.preventDefault(); document.getElementById('deleteProfession').submit()" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+
+
+                        <form id="deleteProfession" style="display: none" action="{{ route('profession.destroy',$profession) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
                 </tr>

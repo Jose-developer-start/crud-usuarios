@@ -11,7 +11,7 @@
 </div>
 <div class="form-group">
     <label for="">Clave: </label>
-    <input type="text" name="password" value="{{ old('password') }}" id="" class="form-control" placeholder="" aria-describedby="helpId">
+    <input type="password" name="password" value="{{ old('password') }}" id="" class="form-control" placeholder="" aria-describedby="helpId">
     {!! $errors->first('password','<small id="helpId" class="text-muted">:message</small>') !!}
 </div>
 <div class="form-group">

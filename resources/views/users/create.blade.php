@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <form action="{{ route('usuario.storage') }}" method="POST">
                         @include('users._form')
-                        <button class="btn btn-success">Agregar</button>
+                        <button class="btn btn-success">Agregar <i class="fas fa-user-plus"></i></button>
                     </form>
                 </div>
             </div>

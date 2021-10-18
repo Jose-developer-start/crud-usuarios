@@ -5,8 +5,10 @@
 
 
     <div class="">
-        <a href="{{ route('usuario.create') }}" class="btn btn-primary">Agregar</a>
-        <table class="table table-responsive-md table-hover">
+        <div class="my-4">
+            <a href="{{ route('usuario.create') }}" class="btn btn-primary"><i class="fas fa-user-plus"></i></a>
+        </div>
+        <table class="table table-responsive-md table-hover" id="myTable">
             <thead>
                 <tr>
                     <th>#</th>
@@ -25,12 +27,16 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->profesion->name }}</td>
                     <td>
-                        <a href="{{ route('usuario.show',$user) }}" class="btn btn-success">Ver</a>
-                        <a href="{{ route('usuario.edit',$user) }}" class="btn btn-info">Editar</a>
-                        <form action="{{ route('usuario.destroy',$user) }}" method="POST">
+                        <a href="{{ route('usuario.show',$user) }}" class="btn btn-success"><i class="far fa-eye "></i></a>
+                        <a href="{{ route('usuario.edit',$user) }}" class="btn btn-info"><i class="fas fa-user-edit"></i></a>
+
+                        <a class="btn btn-danger" href="{{ route('usuario.destroy',$user) }}"
+                        onclick="event.preventDefault();
+                                    document.getElementById('deleteUser').submit();"><i class="far fa-trash-alt"></i></a>
+
+                        <form id="deleteUser" style="display: none" action="{{ route('usuario.destroy',$user) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
                 </tr>
