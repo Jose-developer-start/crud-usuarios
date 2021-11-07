@@ -5,10 +5,7 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/','HomeController@index')->name('home');
 //Route user
 
 Route::get('/usuarios','UserController@index')->name('usuario.index');
